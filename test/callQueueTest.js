@@ -37,7 +37,7 @@ module.exports = {
 		});
 
 		this.lib.once("stop", function () {
-			test.deepEqual(log, [2, 3, "fail", 4, 1]);
+			test.deepEqual(log, [2, 3, 4, 1]);
 			test.done();
 		});
 
@@ -54,7 +54,7 @@ module.exports = {
 			this.lib.restart();
 			setTimeout(function () {
 				run.pid(function (err, pidB) {
-					test.notEqual(pidA, pidA);
+					test.notEqual(pidA, pidB);
 					test.done();
 					this.lib.stop();
 				}.bind(this))
