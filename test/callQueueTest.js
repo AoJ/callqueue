@@ -54,7 +54,7 @@ module.exports = {
 			this.lib.restart();
 			setTimeout(function () {
 				run.pid(function (err, pidB) {
-					test.notEqual(pidA, pidB);
+					test.notEqual(pidA, pidA);
 					test.done();
 					this.lib.stop();
 				}.bind(this))
