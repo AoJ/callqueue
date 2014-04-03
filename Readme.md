@@ -7,7 +7,8 @@ provide easy way to run one command at a time. Prepared for cron and longtime jo
     
 ## Use
 ```javascript
-var sendEmails = callQueue(require.resolve("./lib/sendEmails.js"), ["method1", "method2"]);
+var callqueue = require("callqueue");
+var sendEmails = callqueue(require.resolve("./lib/sendEmails.js"), ["method1", "method2"]);
 ...
 ["email1", "email2"].forEach(function(type) {
   sendEmails.method1(type, function(err, result) {
