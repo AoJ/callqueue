@@ -11,4 +11,4 @@ deploy:
     secure: bOOFBF7xSD2aX0/sEsTvb+o6HLFRp2iRc0vNeDBsNJlTIvGKMtOt0jFG2NVXDFGrU/SYJRuR9MNJi5qpWvPUb31R0oBmxOq3k/OxtusNglgRi59+W0T6oddA8/aTgI6mkUWZ124BDruUj3AkUnPKRR0cvCP9x1xZdFvhluTM3oo=
   on:
     tags: true
-    repo: AoJ/callQueue
+    repo: AoJ/callqueue
