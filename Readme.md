@@ -10,7 +10,7 @@ provide easy way to run one command at a time. Prepared for cron and long task j
 var sendEmails = callQueue(require.resolve("./lib/sendEmails.js"), ["method1", "method2"]);
 ...
 ["email1", "email2"].forEach(function(type) {
-  sendEmails(type, function(err, result) {
+  sendEmails.method1(type, function(err, result) {
       
   });
 });
