@@ -3,7 +3,7 @@ var callQueue = require("../lib/callQueue.js");
 
 
 module.exports = {
-	setUp:    function (callback) {
+	setUp: function (callback) {
 		this.lib = callQueue(require.resolve("./files/exampleLib.js"), ["cbShort", "cbLong", "pid"]);
 
 		callback();
@@ -60,6 +60,19 @@ module.exports = {
 				}.bind(this))
 			}.bind(this), 40);
 
+		}.bind(this));
+	},
+
+	timeout: function (test) {
+
+		var lib = callQueue(require.resolve("./files/exampleLib.js"), ["cbShort", "cbLong", "pid"], {timeout: 2});
+		test.expect(1);
+
+
+		lib.run.cbLong(1, function (err) {
+			test.deepEqual(err, {});
+			test.done();
+			lib.stop();
 		}.bind(this));
 	}
 };
