@@ -1,6 +1,6 @@
 # callQueue [![Build Status](https://travis-ci.org/AoJ/callqueue.svg?branch=master)](https://travis-ci.org/AoJ/callqueue)
 
-provide easy way to run one command at a time. Prepared for cron and long task jobs with 1-size pipeline.
+provide easy way to run one command at a time. Prepared for cron and longtime jobs with 1-size pipeline.
 
 ## Install
     npm install callqueue --save
