@@ -1,4 +1,4 @@
-# callQueue [![Build Status](https://travis-ci.org/AoJ/callQueue.svg?branch=master)](https://travis-ci.org/AoJ/callQueue)
+# callQueue [![Build Status](https://travis-ci.org/AoJ/callqueue.svg?branch=master)](https://travis-ci.org/AoJ/callqueue)
 
   
 
