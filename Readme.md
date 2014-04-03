@@ -1,6 +1,23 @@
 # callQueue [![Build Status](https://travis-ci.org/AoJ/callqueue.svg?branch=master)](https://travis-ci.org/AoJ/callqueue)
 
-  
+provide easy way to run one command at a time. Prepared for cron and long task jobs with 1-size pipeline.
+
+## Install
+    npm install callqueue --save
+    
+## Use
+```javascript
+var sendEmails = callQueue(require.resolve("./lib/sendEmails.js"), ["method1", "method2"]);
+...
+["email1", "email2"].forEach(function(type) {
+  sendEmails(type, function(err, result) {
+      
+  });
+});
+```
+## History
+- 1.0.1 add options
+- 1.0.0 init release
 
 ## License 
 
