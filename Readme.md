@@ -27,10 +27,10 @@ require("callqueue")(fullLibPath, publicMethods, options);
 * **<code>fullLibPath</code>** Can be a local lib <code>require.resolve("./lib/sendEmails.js")</code> or a some node module <code>someModule</code>
 * **<code>publicMethods</code>** Write out all the lib public methods to expose it. Only these methods can be accesible through the callqueue api. All pubic method must be async and last their argument must be callback(err, results...)
 * **<code>options</code>** object
-    * <code>timeout</code> in ms, timeouted job rise error in cb function
-    * <code>workers</code> set number of parallel workers
-    * <code>parallelPerWork</code> number of parallel jobs per worker.
-    * <code>retries</code> max number of call requeues after worker termination (unexpected or timeout).
+    * <code>timeout [1 min]</code> in ms, timeouted job rise error in cb function
+    * <code>workers [1]</code> set number of parallel workers
+    * <code>parallelPerWork [1]</code> number of parallel jobs per worker.
+    * <code>retries [100]</code> max number of call requeues after worker termination (unexpected or timeout).
 
 
 ## API
