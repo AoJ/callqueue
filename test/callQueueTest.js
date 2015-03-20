@@ -4,75 +4,79 @@ var callQueue = require("../lib/callQueue.js");
 
 module.exports = {
 	setUp: function (callback) {
-		this.lib = callQueue(require.resolve("./files/exampleLib.js"), ["cbShort", "cbLong", "pid"]);
+		this.exampleLib = callQueue(require.resolve("./files/exampleLib.js"), ["cbShort", "cbLong", "pid"]);
 
 		callback();
+	},
+
+	tearDown: function (callback) {
+		callback()
 	},
 
 	queue: function (test) {
 		test.expect(5);
 
-		var run = this.lib.run;
+		var exampleLib = this.exampleLib;
 
 		var log = [];
 
-		run.cbLong(2, function (err, a) {
+		exampleLib.cbLong(2, function (err, a) {
 			test.equals(a, 2);
 			log.push(a);
 		});
 
-		run.cbShort(3, function (err, a) {
+		exampleLib.cbShort(3, function (err, a) {
 			test.equals(a, 3);
 			log.push(a);
 		});
 
-		run.cbShort(4, function (err, a) {
+		exampleLib.cbShort(4, function (err, a) {
 			test.equals(a, 4);
 			log.push(a);
 		});
 
-		run.cbShort(1, function (err, a) {
+		exampleLib.cbShort(1, function (err, a) {
 			test.equals(a, 1);
 			log.push(a);
 		});
 
-		this.lib.once("stop", function () {
+		exampleLib.once("stop", function () {
 			test.deepEqual(log, [2, 3, 4, 1]);
 			test.done();
 		});
 
-		this.lib.stop();
+		exampleLib.stop();
 	},
 
 	stop: function (test) {
 		test.expect(1);
 
-		var run = this.lib.run;
+		var exampleLib = this.exampleLib;
 
-		run.pid(function (err, pidA) {
+		exampleLib.pid(function (err, pidA) {
 
-			this.lib.restart();
+			exampleLib.restart();
 			setTimeout(function () {
-				run.pid(function (err, pidB) {
+				exampleLib.pid(function (err, pidB) {
 					test.notEqual(pidA, pidB);
 					test.done();
-					this.lib.stop();
-				}.bind(this))
-			}.bind(this), 40);
+					exampleLib.stop();
+				})
+			}, 40);
 
 		}.bind(this));
 	},
 
 	timeout: function (test) {
 
-		var lib = callQueue(require.resolve("./files/exampleLib.js"), ["cbShort", "cbLong", "pid"], {timeout: 2});
+		var exampleLib = callQueue(require.resolve("./files/exampleLib.js"), ["cbShort", "cbLong", "pid"], {timeout: 2});
 		test.expect(1);
 
 
-		lib.run.cbLong(1, function (err) {
+		exampleLib.cbLong(1, function (err) {
 			test.deepEqual(err, {});
 			test.done();
-			lib.stop();
+			exampleLib.stop();
 		}.bind(this));
 	}
 };

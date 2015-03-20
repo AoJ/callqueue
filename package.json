@@ -1,19 +1,22 @@
 {
   "name": "callqueue",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "",
   "keywords": [],
   "author": "AoJ <aoj@n13.cz>",
   "dependencies": {
-    "bytes": "~0.3.0",
-    "usage": "~0.3.9",
-    "worker-farm": "~0.3.1",
+    "bytes": "~1.0.0",
     "errno": "~0.1.1",
-    "lodash": "~2.4.1"
+    "lodash": "~3.5.0",
+    "usage": "~0.6.0",
+    "worker-farm": "~1.2.0"
+  },
+  "devDependencies": {
+    "nodeunit": "^0.9.1"
   },
   "main": "app",
   "scripts": {
-    "test": "nodeunit test"
+    "test": "./node_modules/.bin/nodeunit test"
   },
   "repository": {
     "type": "git",

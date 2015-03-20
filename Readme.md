@@ -4,15 +4,16 @@ provide easy way to run one command at a time. Prepared for cron and longtime jo
 
 ## Install
     npm install callqueue --save
-    
+
 ## Example
 ```javascript
 var callqueue = require("callqueue");
+//you must provide methods names to setup bindings
 var sendEmails = callqueue(require.resolve("./lib/sendEmails.js"), ["method1", "method2"]);
 ...
 ["email1", "email2"].forEach(function(type) {
-  sendEmails.run.method1(type, function(err, result) {
-      
+  sendEmails.method1(type, function(err, result) {
+
   });
 });
 ```
@@ -29,13 +30,14 @@ require("callqueue")(fullLibPath, publicMethods, options);
     * <code>timeout</code> in ms, timeouted job rise error in cb function
     * <code>workers</code> set number of parallel workers
     * <code>parallelPerWork</code> number of parallel jobs per worker.
+    * <code>retries</code> max number of call requeues after worker termination (unexpected or timeout).
 
 
 ## API
 * **<code>restart()</code>** wait for end all jobs and then restart all workers
 * **<code>stop()</code>** wait for end all jobs and then stop all workers
 * **<code>usage()</code>** return list of <code>{pid: ##, usage: {cpu: ##, memory: ##}}</code> for all running workers
-* **<code>run.{method}(agrs...)</code>** wrapper for call the exposed methods. Args are same as original lib methods.
+* **<code>{method}(agrs...)</code>** wrapper for call the exposed methods. Args are same as original lib methods.
 
 
 ## Events
@@ -48,7 +50,7 @@ callqueue wrapper rising a events.
 - 1.0.1 add options
 - 1.0.0 init release
 
-## License 
+## License
 
 (The MIT License)
 
