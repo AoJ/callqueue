@@ -47,6 +47,7 @@ callqueue wrapper rising a events.
 * **<code>run(method, args)</code>** after call some method
 
 ## History
+- 1.1.0 upgrade to worker-farm 1.2., upgrade dependencies
 - 1.0.1 add options
 - 1.0.0 init release
 
